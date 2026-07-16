@@ -30,17 +30,12 @@ the one with it is the objects (rooms) inside the bucket.
 
 ## Screenshot 1 – Role Creation
 
-```
-Screenshots/01-role-creation.png
-```
 
 ![Role Creation](Screenshots/01-role-creation.png)
 
 ## Screenshot 2 – Policy Attachment
 
-```
-Screenshots/02-policy-attachment.png
-```
+
 
 ![Policy Attachment](Screenshots/02-policy-attachment.png)
 
@@ -56,9 +51,6 @@ Screenshots/02-policy-attachment.png
 
 ## Screenshot 3 – EC2 with Role
 
-```
-screenshots/03-ec2-with-role.png
-```
 
 ![EC2 with Role](Screenshots/03-ec2-with-role.png)
 
@@ -80,17 +72,11 @@ screenshots/03-ec2-with-role.png
 
 ## Screenshot 4 – Assumed-Role Identity
 
-```
-screenshots/04-assumed-role-identity.png
-```
 
 ![Assumed Role Identity](Screenshots/04-assumed-role-identity.png)
 
 ## Screenshot 5 – S3 Upload Success
 
-```
-screenshots/05-s3-upload-success.png
-```
 
 ![S3 Upload Success](Screenshots/05-s3-upload-success.png)
 
@@ -112,9 +98,6 @@ screenshots/05-s3-upload-success.png
 
 ## Screenshot 6 – Access Denied Proof
 
-```
-screenshots/06-access-denied-proof.png
-```
 
 ![Access Denied Proof](Screenshots/06-access-denied-proof.png)
 
