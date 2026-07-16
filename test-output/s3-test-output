@@ -1,0 +1,16 @@
+=== S3 Upload/Download Test Results ===
+
+Command: aws s3 ls s3://ce-bootcamp-m2-05-balint/
+Result: Success - bucket listed with no errors
+
+Command: echo "written by an IAM role, no keys involved" > test.txt
+         aws s3 cp test.txt s3://ce-bootcamp-m2-05-balint/
+Result: Success - upload: ./test.txt to s3://ce-bootcamp-m2-05-balint/test.txt
+
+Command: aws s3 cp s3://ce-bootcamp-m2-05-balint/test.txt -
+Result: Success - printed file contents:
+written by an IAM role, no keys involved
+
+All three operations succeeded using only role-supplied temporary
+credentials - no aws configure was run, no access key was ever typed.
+

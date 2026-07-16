@@ -1,0 +1,42 @@
+=== IAM Roles for EC2 - Test Commands and Output ===
+
+--- Step 6: Confirm No Credentials Exist on Instance ---
+Command: ls -la ~/.aws/ 2>/dev/null || echo "No ~/.aws directory."
+Result: No ~/.aws directory.
+
+--- Step 7: Test the Role - Identity Check ---
+Command: aws sts get-caller-identity
+Result:
+{
+    "UserId": "AROA...:i-xxxxxxxxx",
+    "Account": "743631836010",
+    "Arn": "arn:aws:sts::743631836010:assumed-role/ec2-s3-cloudwatch-role/i-xxxxxxxxx"
+}
+Confirms: authenticated as assumed-role, not an IAM user, with no
+aws configure ever run on this instance.
+
+--- Step 9: Capture Trust Policy (run from laptop, not instance) ---
+Command: aws iam get-role --role-name ec2-s3-cloudwatch-role \
+  --query 'Role.AssumeRolePolicyDocument'
+Result:
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Principal": { "Service": "ec2.amazonaws.com" },
+    "Action": "sts:AssumeRole"
+  }]
+}
+
+--- Step 10: Locate Source of Credentials (IMDSv2) ---
+Command:
+TOKEN=$(curl -sX PUT "http://169.254.169.254/latest/api/token" \
+  -H "X-aws-ec2-metadata-token-ttl-seconds: 300")
+curl -sH "X-aws-ec2-metadata-token: $TOKEN" \
+  http://169.254.169.254/latest/meta-data/iam/security-credentials/ec2-s3-cloudwatch-role
+
+Result: Response included Code: "Success", AccessKeyId, SecretAccessKey,
+Token, and an Expiration timestamp approximately 6 hours in the future -
+confirming genuinely short-lived, auto-rotating credentials.
+(Actual credential values omitted from this file per the lab's security
+guidance - these expire automatically regardless.)

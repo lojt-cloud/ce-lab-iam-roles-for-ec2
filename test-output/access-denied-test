@@ -1,0 +1,17 @@
+=== Least Privilege Verification ===
+
+Test 1: Access a bucket never granted in the policy
+Command: aws s3 ls s3://some-other-bucket-name/
+Result: AccessDenied - correctly blocked, as expected. The role's policy
+only grants access to ce-bootcamp-m2-05-balint specifically.
+
+Test 2: Attempt an action never granted (delete), even on the correct bucket
+Command: aws s3 rb s3://ce-bootcamp-m2-05-balint --force
+Result: AccessDenied - correctly blocked, as expected. The policy grants
+GetObject, PutObject, and ListBucket only - never DeleteBucket or
+DeleteObject.
+
+Both failures confirm the role enforces least privilege correctly: it can
+only do what was explicitly granted, and nothing more, even on resources
+it otherwise has access to.
+
