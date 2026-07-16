@@ -57,7 +57,7 @@ aws s3 mb s3://ce-bootcamp-m2-05-YOURNAME   # mb = "make bucket"
 aws s3 ls                                   # list all buckets to confirm it exists
 ```
 
-**Write down your bucket name:** `_______________________`
+**Write down your bucket name:** ce-bootcamp-m2-05-balint
 
 **Expected outcome:** The bucket appears in `aws s3 ls`.
 
@@ -74,8 +74,8 @@ Review the following policy, paying particular attention to the `Resource` block
     "Effect": "Allow",
     "Action": ["s3:GetObject", "s3:PutObject", "s3:ListBucket"],
     "Resource": [
-      "arn:aws:s3:::YOUR-BUCKET-NAME/*",
-      "arn:aws:s3:::YOUR-BUCKET-NAME"
+      "arn:aws:s3:::ce-bootcamp-m2-05-balint/*",
+      "arn:aws:s3:::ce-bootcamp-m2-05-balint"
     ]
   }]
 }

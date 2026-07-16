@@ -1,36 +1,22 @@
 # IAM Roles for EC2 Lab - Solution
 
-**Student Name:** [Your Name]  
-**Date Completed:** [Date]
+**Student Name:** Balint Lojt
+**Date Completed:** 16/07/2026
 
----
 
-# Environment Details
+  [X] Bucket created with `aws s3 mb`
+- [X ] Bucket appears in `aws s3 ls`
 
-| Item | Value |
-|------|-------|
-| Instance ID | [i-xxxxxxxxxxxxx] |
-| Region | [eu-west-1] |
-| S3 Bucket Name | [ce-bootcamp-m2-05-yourname] |
-| Policy Name | [ec2-s3-access-policy] |
-| Role Name | [ec2-s3-cloudwatch-role] |
+**My bucket name:** 
 
----
-
-# Step 1: Create an S3 Bucket
-
-- [ ] Bucket created with `aws s3 mb`
-- [ ] Bucket appears in `aws s3 ls`
-
-**My bucket name:** `_______________________`
-
+ce-bootcamp-m2-05-balint
 ---
 
 # Step 2 & 3: Create the Custom Policy
 
-- [ ] Policy `ec2-s3-access-policy` created from the JSON
-- [ ] Both `YOUR-BUCKET-NAME` placeholders replaced with my real bucket
-- [ ] `Resource` has **both** ARNs (bucket and objects)
+- [X] Policy `ec2-s3-access-policy` created from the JSON
+- [X] Both `YOUR-BUCKET-NAME` placeholders replaced with my real bucket
+- [X] `Resource` has **both** ARNs (bucket and objects)
 
 ### Why does the policy need two ARNs (one with `/*`, one without)?
 
@@ -47,24 +33,24 @@ _______________________________________________________________
 ## Screenshot 1 – Role Creation
 
 ```
-screenshots/01-role-creation.png
+Screenshots/01-role-creation.png
 ```
 
-![Role Creation](screenshots/01-role-creation.png)
+![Role Creation](Screenshots/01-role-creation.png)
 
 ## Screenshot 2 – Policy Attachment
 
 ```
-screenshots/02-policy-attachment.png
+Screenshots/02-policy-attachment.png
 ```
 
-![Policy Attachment](screenshots/02-policy-attachment.png)
+![Policy Attachment](Screenshots/02-policy-attachment.png)
 
 ---
 
-- [ ] Role `ec2-s3-cloudwatch-role` created with **EC2** trusted entity
-- [ ] `CloudWatchAgentServerPolicy` attached
-- [ ] `ec2-s3-access-policy` attached
+- [X] Role `ec2-s3-cloudwatch-role` created with **EC2** trusted entity
+- [X] `CloudWatchAgentServerPolicy` attached
+- [X] `ec2-s3-access-policy` attached
 
 ---
 
