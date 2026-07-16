@@ -62,19 +62,19 @@ Screenshots/02-policy-attachment.png
 screenshots/03-ec2-with-role.png
 ```
 
-![EC2 with Role](screenshots/03-ec2-with-role.png)
+![EC2 with Role](Screenshots/03-ec2-with-role.png)
 
 ---
 
-- [ ] Role attached via **Actions → Security → Modify IAM role**
-- [ ] Instance **Details** tab shows the IAM role
+- [X] Role attached via **Actions → Security → Modify IAM role**
+- [X] Instance **Details** tab shows the IAM role
 
 ---
 
 # Step 6: Confirm No Credentials Exist on the Instance
 
-- [ ] Ran `ls -la ~/.aws/` on the instance
-- [ ] No `~/.aws/credentials` file present (deleted it if it existed)
+- [X] Ran `ls -la ~/.aws/` on the instance
+- [X] No `~/.aws/credentials` file present (deleted it if it existed)
 
 ---
 
@@ -86,7 +86,7 @@ screenshots/03-ec2-with-role.png
 screenshots/04-assumed-role-identity.png
 ```
 
-![Assumed Role Identity](screenshots/04-assumed-role-identity.png)
+![Assumed Role Identity](Screenshots/04-assumed-role-identity.png)
 
 ## Screenshot 5 – S3 Upload Success
 
@@ -94,23 +94,21 @@ screenshots/04-assumed-role-identity.png
 screenshots/05-s3-upload-success.png
 ```
 
-![S3 Upload Success](screenshots/05-s3-upload-success.png)
+![S3 Upload Success](Screenshots/05-s3-upload-success.png)
 
 ---
 
-- [ ] `aws sts get-caller-identity` shows `assumed-role/`, not `user`
-- [ ] `aws s3 ls s3://YOUR-BUCKET-NAME/` works
-- [ ] Upload (`aws s3 cp test.txt ...`) works
-- [ ] Read-back works
-- [ ] I never typed a credential
+- [X] `aws sts get-caller-identity` shows `assumed-role/`, not `user`
+- [X] `aws s3 ls s3://YOUR-BUCKET-NAME/` works
+- [X] Upload (`aws s3 cp test.txt ...`) works
+- [X] Read-back works
+- [X] I never typed a credential
 
 ### The `Arn` from `get-caller-identity`
 
-```text
-[Paste the assumed-role ARN here]
-```
+"Arn": "arn:aws:sts::743631836010:assumed-role/ec2-s3-cloudwatch-role/i-0c5c072e78deefdf9"
 
----
+
 
 # Step 8: Test Least Privilege
 
