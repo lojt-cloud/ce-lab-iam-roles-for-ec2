@@ -10,6 +10,7 @@
 **My bucket name:** 
 
 ce-bootcamp-m2-05-balint
+
 ---
 
 # Step 2 & 3: Create the Custom Policy
@@ -20,13 +21,10 @@ ce-bootcamp-m2-05-balint
 
 ### Why does the policy need two ARNs (one with `/*`, one without)?
 
-```
-_______________________________________________________________
+One without the /* is the bucket (building) itself,
+the one with it is the objects (rooms) inside the bucket. 
 
-_______________________________________________________________
-```
 
----
 
 # Step 4: Create the IAM Role
 
@@ -118,39 +116,43 @@ screenshots/05-s3-upload-success.png
 screenshots/06-access-denied-proof.png
 ```
 
-![Access Denied Proof](screenshots/06-access-denied-proof.png)
+![Access Denied Proof](Screenshots/06-access-denied-proof.png)
 
 ---
 
-- [ ] Listing a bucket I was not granted → `AccessDenied`
-- [ ] `aws s3 rb` (delete, not granted) → `AccessDenied`
+- [X] Listing a bucket I was not granted → `AccessDenied`
+- [X] `aws s3 rb` (delete, not granted) → `AccessDenied`
 
 ---
 
 # Step 9: Capture the Trust Policy
 
-- [ ] Ran `aws iam get-role ...` **from my laptop** (not the instance)
-- [ ] Saved output as `trust-policy.json`
-- [ ] Trust policy `Principal` is `ec2.amazonaws.com`
+- [X] Ran `aws iam get-role ...` **from my laptop** (not the instance)
+- [X] Saved output as `trust-policy.json`
+- [X] Trust policy `Principal` is `ec2.amazonaws.com`
 
 ---
 
 # Step 10: Locate the Source of the Credentials
 
-- [ ] Fetched an IMDSv2 token, then read the role credentials from `169.254.169.254`
-- [ ] Response includes `AccessKeyId`, `SecretAccessKey`, `Token`, and an `Expiration`
+- [X] Fetched an IMDSv2 token, then read the role credentials from `169.254.169.254`
+- [X] Response includes `AccessKeyId`, `SecretAccessKey`, `Token`, and an `Expiration`
 
-```
-_______________________________________________________________
-```
+# Step 10: Instance Metadata Service Response
 
----
+Successfully retrieved temporary credentials from IMDSv2 (after obtaining a session token). Response included the expected fields: Code: "Success",
+AccessKeyId, SecretAccessKey, Token, and an Expiration timestamp
+approximately 6 hours in the future - confirming these are genuinely
+short-lived, auto-rotating credentials, not permanent keys.
+
+(Actual credential values omitted from this document, per the lab's
+security guidance - these expire automatically regardless.)
 
 # Cleanup
 
-- [ ] Emptied and deleted the S3 bucket (`aws s3 rb ... --force`)
-- [ ] Instance **stopped** (not terminated)
-- [ ] IAM role left in place (costs nothing)
+- [X] Emptied and deleted the S3 bucket (`aws s3 rb ... --force`)
+- [X] Instance **stopped** (not terminated)
+- [X] IAM role left in place (costs nothing)
 
 ---
 
@@ -158,12 +160,12 @@ _______________________________________________________________
 
 Repository name: `ce-lab-iam-roles-ec2` (**public**)
 
-- [ ] `policies/s3-cloudwatch-policy.json` and `policies/trust-policy.json` committed
-- [ ] `test-output/` files committed (commands, S3 test, access-denied test)
-- [ ] All 6 screenshots present
-- [ ] `README.md` complete with reflections
-- [ ] Policy uses **both** ARN forms
-- [ ] `get-caller-identity` shows `assumed-role/`
-- [ ] `~/.aws/credentials` does **not** exist on the instance
-- [ ] Account ID redacted (if I chose to)
-- [ ] Repository URL submitted
+- [X] `policies/s3-cloudwatch-policy.json` and `policies/trust-policy.json` committed
+- [X] `test-output/` files committed (commands, S3 test, access-denied test)
+- [X] All 6 screenshots present
+- [X] `README.md` complete with reflections
+- [X] Policy uses **both** ARN forms
+- [X] `get-caller-identity` shows `assumed-role/`
+- [X] `~/.aws/credentials` does **not** exist on the instance
+- [X] Account ID redacted (if I chose to)
+- [X] Repository URL submitted
